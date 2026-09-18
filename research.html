@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Research by Umang Agarwal on behavioral auditing, model diffing, AI safety evaluations, sandbagging, and mechanistic interpretability.">
+    <meta name="theme-color" content="#f3efe5">
+    <title>Research — Umang Agarwal</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="wordmark" href="index.html" aria-label="Umang Agarwal, home">
+          <span class="wordmark-mark" aria-hidden="true">UA</span>
+          <span>Umang Agarwal</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="research.html">Research</a>
+          <a href="about.html">About</a>
+          <a class="nav-contact" href="mailto:omung.agarwal@gmail.com">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <header class="page-header shell" data-reveal>
+        <p class="eyebrow">Research</p>
+        <h1>Auditing behavior, representations, and the evaluations between them.</h1>
+        <p>
+          My projects ask narrow empirical questions about whether model internals predict behavior, whether
+          safety evaluations measure what they claim, and which conclusions survive distribution shift and causal controls.
+        </p>
+      </header>
+
+      <section class="section shell research-list" aria-label="Research projects">
+        <article class="research-row research-row-featured" data-reveal>
+          <div class="research-meta">
+            <span class="status status-active">Active</span>
+            <span>Sep 2026–present</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Behavioral auditing · Causal interpretability</p>
+            <h2><a href="projects/finetune-trace.html">Finetune Trace: Behavior or Topic?</a></h2>
+            <p>
+              A controlled audit of whether activation differences, logits, perplexity, and black-box elicitation
+              recover a finetuned model’s conditional response policy. The first active auditor failed against a
+              stronger static baseline; a separate causal direction transferred behavior across topic and seed but
+              failed a vocabulary-invariance follow-up.
+            </p>
+            <ul class="compact-facts">
+              <li>Eight Qwen3-1.7B finetunes across topic, policy, and seed</li>
+              <li>720 hidden Stage 1 responses under a frozen protocol</li>
+              <li>Stage 1b currently targets a conditional response surface</li>
+            </ul>
+            <a class="text-link" href="projects/finetune-trace.html">Open case study <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article id="safety-research-bench" class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-complete">Pilot complete</span>
+            <span>Sep 2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Research reliability · Benchmark design</p>
+            <h2>Safety Research Bench</h2>
+            <p>
+              Tests whether language models make empirical AI-safety research more reliable. Six matched clean/flawed
+              pairs expose errors that binary “accept or reject” scores miss, including operating-point failures,
+              contaminated placebos, test-set reuse, and shifted monitor calibration.
+            </p>
+            <div class="mini-results">
+              <div><strong>83.3%</strong><span>Qwen3-4B decision accuracy</span></div>
+              <div><strong>66.7%</strong><span>strict matched-pair discrimination</span></div>
+              <div><strong>24</strong><span>blinded free-form review packets</span></div>
+            </div>
+            <p class="limitation"><strong>Boundary:</strong> Engineering feasibility only; expert review and a larger frozen benchmark remain open.</p>
+          </div>
+        </article>
+
+        <article id="sandbagging" class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-complete">Experiment complete</span>
+            <span>Aug 2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Sandbagging · Access-aware detection</p>
+            <h2>Black-box vs. white-box sandbagging detection</h2>
+            <p>
+              Compared three detectors on Qwen2.5-3B: behavioral inconsistency, mechanism-motivated weight noise,
+              and a labeled activation probe. The black-box detector separated prompted sandbagging in aggregate,
+              but detected nothing at a strict 1% false-positive rate. Near-perfect probes likely learned prompt identity.
+            </p>
+            <div class="mini-results">
+              <div><strong>66% → 27.5%</strong><span>WMDP-Bio accuracy under blatant sandbagging</span></div>
+              <div><strong>0.79</strong><span>target-strategy black-box AUROC</span></div>
+              <div><strong>0</strong><span>TPR at 1% FPR</span></div>
+            </div>
+            <figure class="inline-figure">
+              <img src="assets/sandbagging-gap.png" alt="Bar chart showing the elicitation gap across neutral and sandbagging conditions." loading="lazy">
+              <figcaption>Prompted sandbagging establishes an elicitation gap, but not a realistic strategic model organism.</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-stopped">Frozen no-go</span>
+            <span>Sep 2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Evaluation awareness · Experimental validity</p>
+            <h2>Blindfolded Expert Iteration</h2>
+            <p>
+              A hash-locked semantic validation over 520 blinded contexts stopped before training when supposedly
+              neutral controls retained evaluation-conditioned meaning. Near and distant placebos were contaminated
+              at 15% and 5%, invalidating the proposed causal estimand.
+            </p>
+            <p class="limitation"><strong>Lesson:</strong> Lexically neutral reasoning inside an awareness-bearing trace may still be causally downstream of evaluation awareness.</p>
+          </div>
+        </article>
+
+        <article class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-complete">Selected system</span>
+            <span>2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Fine-tuning · Frozen evaluation</p>
+            <h2>Local LLM Fine-Tuning Lab</h2>
+            <p>
+              Built an MLX/QLoRA pipeline for a structured, evidence-grounded Python documentation assistant.
+              A V3 adapter remains selected after four later adapters were rejected for cross-holdout utility
+              regressions, despite improvements in validation loss or decision accuracy.
+            </p>
+            <ul class="compact-facts">
+              <li>Versioned datasets, untouched holdouts, and checkpoint gates</li>
+              <li>100% on all predefined metrics on the frozen 90-case V3 evaluation</li>
+              <li>Explicit rejection of V4–V7 regressions</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-complete">Studies complete</span>
+            <span>Sep 2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Benchmark auditing · Reproduction</p>
+            <h2>Benchmark methodology studies</h2>
+            <p>
+              Reproduced slices of AAAR Equation Inference, AAAR Experiment Design, and GPQA Diamond before
+              designing a new research benchmark. The open-ended study found that changing only the local judge
+              shifted the same candidate’s score by 47–55 F1 points.
+            </p>
+            <div class="mini-results">
+              <div><strong>41.67%</strong><span>Qwen3-4B on GPQA Diamond</span></div>
+              <div><strong>150</strong><span>judge disagreements exported for review</span></div>
+              <div><strong>46–51%</strong><span>raw local-judge agreement</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="research-row" data-reveal>
+          <div class="research-meta">
+            <span class="status status-active">Foundation complete</span>
+            <span>Sep 2026</span>
+          </div>
+          <div class="research-body">
+            <p class="project-kicker">Safety evaluation · Threat modeling</p>
+            <h2>AI Alignment and Safety Benchmarks</h2>
+            <p>
+              A broader evaluation suite organized around three distinct questions: what a model can do, what it
+              will do under declared conditions, and whether control measures can stop it. The first 120-row
+              development endpoint is complete; hidden validation-family authoring has not started.
+            </p>
+            <p class="limitation"><strong>Boundary:</strong> The current development result supports measurement debugging, not a safety or deployment claim.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <p>© 2026 Umang Agarwal</p>
+        <p>Research, engineering, and honest uncertainty.</p>
+        <div>
+          <a href="mailto:omung.agarwal@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

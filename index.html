@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Umang Agarwal is an independent AI safety researcher and software engineer working on behavioral auditing, model evaluations, and mechanistic interpretability.">
+    <meta name="theme-color" content="#f3efe5">
+    <title>Umang Agarwal — AI Safety Researcher</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="wordmark" href="index.html" aria-label="Umang Agarwal, home">
+          <span class="wordmark-mark" aria-hidden="true">UA</span>
+          <span>Umang Agarwal</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a class="active" href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="about.html">About</a>
+          <a class="nav-contact" href="mailto:omung.agarwal@gmail.com">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero shell">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Independent AI safety researcher · Software engineer</p>
+          <h1>I study what models <em>learn</em>, what evaluations <em>measure</em>, and where the two come apart.</h1>
+          <p class="hero-intro">
+            My work combines behavioral auditing, causal activation interventions, and careful experimental design.
+            I am especially interested in hidden finetuning behavior, sandbagging, and the reliability of model-based evaluations.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="research.html">Explore my research</a>
+            <a class="button button-quiet" href="about.html">More about me <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <aside class="hero-note" data-reveal>
+          <p class="note-label">Current question</p>
+          <p class="note-question">Can an auditor recover a finetuned model’s conditional policy—not merely recognize its training topic?</p>
+          <a href="projects/finetune-trace.html">Read the flagship study <span aria-hidden="true">↗</span></a>
+        </aside>
+      </section>
+
+      <section class="signal-strip" aria-label="Selected research figures">
+        <div class="shell signal-grid">
+          <div>
+            <strong>8</strong>
+            <span>controlled Qwen LoRA variants</span>
+          </div>
+          <div>
+            <strong>720</strong>
+            <span>hidden endpoint responses</span>
+          </div>
+          <div>
+            <strong>520</strong>
+            <span>blinded semantic contexts</span>
+          </div>
+          <div>
+            <strong>0.79</strong>
+            <span>black-box sandbagging AUROC</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shell">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2>Research built to survive contact with its own controls.</h2>
+          </div>
+          <a class="text-link" href="research.html">View all projects <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="featured-grid">
+          <article class="project-card project-card-large" data-reveal>
+            <div class="card-topline">
+              <span class="status status-active">Active research</span>
+              <span>Model diffing · Interpretability</span>
+            </div>
+            <h3><a href="projects/finetune-trace.html">Finetune Trace: Behavior or Topic?</a></h3>
+            <p>
+              Tests whether model-diffing methods recover the behavior installed by a finetune, rather than merely
+              exposing the data or topic associated with it.
+            </p>
+            <div class="result-callout">
+              <span class="result-number">69/70 → 3/70</span>
+              <span>confirmations after a cross-topic, cross-seed causal intervention</span>
+            </div>
+            <a class="card-link" href="projects/finetune-trace.html">Study, results, and limitations <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="project-card" data-reveal>
+            <div class="card-topline">
+              <span class="status status-complete">Pilot complete</span>
+              <span>Evaluation design</span>
+            </div>
+            <h3><a href="research.html#safety-research-bench">Safety Research Bench</a></h3>
+            <p>
+              A matched-pair benchmark for whether models can distinguish well-supported AI-safety research claims
+              from methodologically flawed ones.
+            </p>
+            <p class="card-footnote">Includes deterministic scoring, private answer keys, and a blinded free-form review workflow.</p>
+          </article>
+
+          <article class="project-card card-ink" data-reveal>
+            <div class="card-topline">
+              <span class="status status-complete">Experiment complete</span>
+              <span>Sandbagging</span>
+            </div>
+            <h3><a href="research.html#sandbagging">Black-box vs. white-box detection</a></h3>
+            <p>
+              Compared behavioral inconsistency, weight noise, and activation probes across an access ladder for
+              detecting strategically suppressed capability.
+            </p>
+            <p class="card-footnote">The apparently strongest probe result also exposed the clearest confound.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-tinted">
+        <div class="shell method-layout">
+          <div class="method-intro" data-reveal>
+            <p class="eyebrow">How I work</p>
+            <h2>Negative results are results.</h2>
+            <p>
+              A clean stop can be more informative than a polished but unstable claim. My projects use frozen
+              protocols, explicit gates, matched controls, and post-hoc labels that stay visibly post-hoc.
+            </p>
+          </div>
+          <ol class="method-list">
+            <li data-reveal>
+              <span>01</span>
+              <div>
+                <h3>Freeze the question</h3>
+                <p>Define the estimand, intervention, success threshold, and failure interpretation before opening the result.</p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span>02</span>
+              <div>
+                <h3>Audit the instrument</h3>
+                <p>Verify decoder parity, model behavior gates, data boundaries, and controls before trusting a headline metric.</p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span>03</span>
+              <div>
+                <h3>Report the boundary</h3>
+                <p>Separate what the experiment supports from what it merely suggests—and preserve failed branches as evidence.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section shell">
+        <div class="contact-panel" data-reveal>
+          <div>
+            <p class="eyebrow">Get in touch</p>
+            <h2>Interested in careful empirical work on model behavior?</h2>
+          </div>
+          <a class="button button-light" href="mailto:omung.agarwal@gmail.com">omung.agarwal@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <p>© 2026 Umang Agarwal</p>
+        <p>Research, engineering, and honest uncertainty.</p>
+        <div>
+          <a href="mailto:omung.agarwal@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
