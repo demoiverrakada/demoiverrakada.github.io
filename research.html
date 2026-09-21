@@ -62,6 +62,7 @@
               <li>Stage 1b currently targets a conditional response surface</li>
             </ul>
             <a class="text-link" href="projects/finetune-trace.html">Open case study <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="https://github.com/demoiverrakada/finetune-trace-behavior">Code and reports <span aria-hidden="true">↗</span></a>
           </div>
         </article>
 
@@ -89,7 +90,7 @@
 
         <article id="sandbagging" class="research-row" data-reveal>
           <div class="research-meta">
-            <span class="status status-complete">Experiment complete</span>
+            <span class="status status-active">Exploratory pilot</span>
             <span>Aug 2026</span>
           </div>
           <div class="research-body">
@@ -98,17 +99,20 @@
             <p>
               Compared three detectors on Qwen2.5-3B: behavioral inconsistency, mechanism-motivated weight noise,
               and a labeled activation probe. The black-box detector separated prompted sandbagging in aggregate,
-              but detected nothing at a strict 1% false-positive rate. Near-perfect probes likely learned prompt identity.
+              but detected nothing at an empirical 1% false-positive threshold in a 100-question sample. Near-perfect
+              probes likely learned prompt identity; a corrected train/validation/test rerun remains open.
             </p>
             <div class="mini-results">
-              <div><strong>66% → 27.5%</strong><span>WMDP-Bio accuracy under blatant sandbagging</span></div>
+              <div><strong>66% → 23–36%</strong><span>WMDP-Bio accuracy across prompted sandbagging conditions</span></div>
               <div><strong>0.79</strong><span>target-strategy black-box AUROC</span></div>
-              <div><strong>0</strong><span>TPR at 1% FPR</span></div>
+              <div><strong>0</strong><span>empirical TPR at 1% FPR</span></div>
             </div>
             <figure class="inline-figure">
               <img src="assets/sandbagging-gap.png" alt="Bar chart showing the elicitation gap across neutral and sandbagging conditions." loading="lazy">
               <figcaption>Prompted sandbagging establishes an elicitation gap, but not a realistic strategic model organism.</figcaption>
             </figure>
+            <p class="limitation"><strong>Boundary:</strong> These are exploratory point estimates, not evidence of a deployment-ready low-FPR detector.</p>
+            <a class="text-link" href="https://github.com/demoiverrakada/sandbagging-evals">Code, artifacts, and limitations <span aria-hidden="true">↗</span></a>
           </div>
         </article>
 
@@ -119,23 +123,24 @@
           </div>
           <div class="research-body">
             <p class="project-kicker">Evaluation awareness · Experimental validity</p>
-            <h2>Blindfolded Expert Iteration</h2>
+            <h2>Evaluation-Awareness Control Validation</h2>
             <p>
               A hash-locked semantic validation over 520 blinded contexts stopped before training when supposedly
               neutral controls retained evaluation-conditioned meaning. Near and distant placebos were contaminated
               at 15% and 5%, invalidating the proposed causal estimand.
             </p>
             <p class="limitation"><strong>Lesson:</strong> Lexically neutral reasoning inside an awareness-bearing trace may still be causally downstream of evaluation awareness.</p>
+            <a class="text-link" href="https://github.com/demoiverrakada/blindfolded-expert-iteration">Frozen protocol and no-go report <span aria-hidden="true">↗</span></a>
           </div>
         </article>
 
         <article class="research-row" data-reveal>
           <div class="research-meta">
-            <span class="status status-complete">Selected system</span>
+            <span class="status status-complete">Engineering study</span>
             <span>2026</span>
           </div>
           <div class="research-body">
-            <p class="project-kicker">Fine-tuning · Frozen evaluation</p>
+            <p class="project-kicker">Additional ML engineering · Frozen evaluation</p>
             <h2>Local LLM Fine-Tuning Lab</h2>
             <p>
               Built an MLX/QLoRA pipeline for a structured, evidence-grounded Python documentation assistant.
@@ -144,9 +149,10 @@
             </p>
             <ul class="compact-facts">
               <li>Versioned datasets, untouched holdouts, and checkpoint gates</li>
-              <li>100% on all predefined metrics on the frozen 90-case V3 evaluation</li>
+              <li>Strict schema validity improved from 33.3% to 100% on the 90-case V3 evaluation; the base already achieved 100% on the core semantic metrics</li>
               <li>Explicit rejection of V4–V7 regressions</li>
             </ul>
+            <a class="text-link" href="https://github.com/demoiverrakada/llm-finetuning-lab">Engineering artifacts <span aria-hidden="true">↗</span></a>
           </div>
         </article>
 
@@ -173,7 +179,7 @@
 
         <article class="research-row" data-reveal>
           <div class="research-meta">
-            <span class="status status-active">Foundation complete</span>
+            <span class="status status-active">Development slice complete</span>
             <span>Sep 2026</span>
           </div>
           <div class="research-body">
@@ -181,9 +187,12 @@
             <h2>AI Alignment and Safety Benchmarks</h2>
             <p>
               A broader evaluation suite organized around three distinct questions: what a model can do, what it
-              will do under declared conditions, and whether control measures can stop it. The first 120-row
-              development endpoint is complete; hidden validation-family authoring has not started.
+              will do under declared conditions, and whether control measures can stop it. The first development
+              run, covering 20 families × 6 variants = 120 prompts, is complete. The hidden validation tooling is implemented, one private family has
+              passed the current review workflow, and the remaining bank has not yet been authored.
             </p>
+            <p class="limitation"><strong>Boundary:</strong> The development labels are not independent human gold and support pipeline debugging, not model-safety or ranking claims.</p>
+            <a class="text-link" href="https://github.com/demoiverrakada/ai-alignment-safety-benchmarks">Inspect package and development report <span aria-hidden="true">↗</span></a>
             <p class="limitation"><strong>Boundary:</strong> The current development result supports measurement debugging, not a safety or deployment claim.</p>
           </div>
         </article>
