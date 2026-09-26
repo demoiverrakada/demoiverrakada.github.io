@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projects by Umang Agarwal: reproductions, exploratory AI safety studies, ML engineering, and formal methods.">
+    <title>Projects — Umang Agarwal</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="layout">
+      <aside class="sidebar">
+        <a href="index.html"><img class="avatar" src="assets/umang.jpg" alt="Photo of Umang Agarwal" width="120" height="120"></a>
+        <a class="name" href="index.html">Umang Agarwal</a>
+        <p class="role">Independent AI safety researcher</p>
+        <nav aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="projects.html" aria-current="page">Projects</a>
+          <a href="bookshelf.html">Bookshelf</a>
+          <a href="about.html">About</a>
+        </nav>
+      </aside>
+      <div class="content">
+      <main id="main">
+        <h1>Projects</h1>
+        <p>
+          Reproductions of published results, exploratory studies of my own, and engineering projects. The limits of
+          each result are written next to it.
+        </p>
+
+        <h2>In progress</h2>
+
+        <section class="project" id="finetune-trace">
+          <h3><a href="projects/finetune-trace.html">Finetune Trace: behavior or topic?</a></h3>
+          <p class="meta">Active · Sep 2026–present · Behavioral auditing, causal interpretability</p>
+          <p>
+            A controlled audit of whether activation differences, logits, perplexity, and black-box elicitation
+            recover a finetuned model’s conditional response policy. The first active auditor failed against a
+            stronger static baseline; a separate causal direction transferred behavior across topic and seed but
+            failed a vocabulary-invariance follow-up.
+          </p>
+          <ul>
+            <li>Eight Qwen3-1.7B finetunes across topic, policy, and seed</li>
+            <li>720 hidden Stage 1 responses under a frozen protocol</li>
+            <li>Stage 1b currently targets a conditional response surface</li>
+          </ul>
+          <p class="links">
+            <a href="projects/finetune-trace.html">Case study</a>
+            <a href="https://github.com/demoiverrakada/finetune-trace-behavior">Code and reports</a>
+          </p>
+        </section>
+
+        <h2>Exploratory studies</h2>
+
+        <section class="project" id="sandbagging">
+          <h3>Black-box vs. white-box sandbagging detection</h3>
+          <p class="meta">Exploratory pilot · Aug 2026 · Sandbagging, access-aware detection</p>
+          <p>
+            Compared three detectors on Qwen2.5-3B: behavioral inconsistency, mechanism-motivated weight noise,
+            and a labeled activation probe. The black-box detector separated prompted sandbagging in aggregate,
+            but detected nothing at an empirical 1% false-positive threshold in a 100-question sample.
+            Near-perfect probes likely learned prompt identity; a corrected train/validation/test rerun remains
+            open.
+          </p>
+          <ul>
+            <li>WMDP-Bio accuracy, neutral → blatant / target: 66% → 27.5% / 40.5% (200 items)</li>
+            <li>Target-strategy black-box AUROC: 0.79</li>
+            <li>Empirical true-positive rate at 1% false-positive rate: 0</li>
+          </ul>
+          <figure>
+            <img src="assets/sandbagging-gap.png" alt="Bar chart showing the elicitation gap across neutral and sandbagging conditions." loading="lazy">
+            <figcaption>Prompted sandbagging establishes an elicitation gap, but not a realistic strategic model organism.</figcaption>
+          </figure>
+          <p class="note">
+            Limits: these are exploratory point estimates, not evidence of a deployment-ready low-FPR detector.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/sandbagging-evals">Code, artifacts, and limitations</a>
+          </p>
+        </section>
+
+        <section class="project" id="eval-awareness">
+          <h3>Evaluation-awareness control validation</h3>
+          <p class="meta">Stopped before training · Sep 2026 · Evaluation awareness, experimental validity</p>
+          <p>
+            A hash-locked semantic validation over 520 blinded contexts stopped before training when supposedly
+            neutral controls retained evaluation-conditioned meaning. Near and distant placebos were
+            contaminated at 15% and 5%, invalidating the proposed causal estimand.
+          </p>
+          <p class="note">
+            Lesson: lexically neutral reasoning inside an awareness-bearing trace may still be causally
+            downstream of evaluation awareness.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/blindfolded-expert-iteration">Frozen protocol and no-go report</a>
+          </p>
+        </section>
+
+        <section class="project" id="refusal-cartography">
+          <h3>Refusal Cartography</h3>
+          <p class="meta">Stage 0 · Jul 2026 · Refusal behavior, black-box and white-box</p>
+          <p>
+            Probes a model's refusal boundary with controlled, mostly benign prompts, aiming to fit an explicit model of what drives
+            refusal, and to test whether that model predicts attacks it has never tried better than a matched search baseline.
+            It is at Stage 0: building and checking the grading instrument, which separates whether a model refused from whether its
+            answer carried real capability.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/refusal-cartography">Code and design</a>
+          </p>
+        </section>
+
+        <section class="project" id="redteam-pipeline">
+          <h3>LLM red-teaming evaluation pipeline</h3>
+          <p class="meta">May 2026 · Refusal robustness</p>
+          <p>
+            A local pipeline measuring how often refusals hold in Llama 3.2 3B, with Llama 3.2 1B as an automated judge. On 500
+            adversarial prompts the attack success rate was 48.4%, and 23% of 100 benign prompts were wrongly refused.
+          </p>
+          <p class="note">Limits: a small local judge labels the outputs, so the rates carry judge noise.</p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/llm-redteam-pipeline">Code and results</a>
+          </p>
+        </section>
+
+        <section class="project" id="safety-benchmarks">
+          <h3>AI alignment and safety benchmarks</h3>
+          <p class="meta">Development slice complete · Sep 2026 · Safety evaluation, threat modeling</p>
+          <p>
+            A broader evaluation suite organized around three distinct questions: what a model can do, what it
+            will do under declared conditions, and whether control measures can stop it. The first development
+            run, covering 20 families × 6 variants = 120 prompts, is complete. The hidden validation tooling is
+            implemented, one private family has passed the current review workflow, and the remaining bank has
+            not yet been authored.
+          </p>
+          <p class="note">
+            Limits: the mixed-provenance development labels are not independent human gold; they support
+            pipeline debugging, not model-safety or ranking claims.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/ai-alignment-safety-benchmarks">Inspect package and development report</a>
+          </p>
+        </section>
+
+        <h2>Reproductions</h2>
+
+        <section class="project" id="grokking">
+          <h3>Grokking: progress measures (Nanda et al. 2023)</h3>
+          <p class="meta">Aug 2026 · Mechanistic interpretability</p>
+          <p>
+            A from-scratch reproduction: a one-layer transformer trained on addition mod 113 first memorizes, then suddenly
+            generalizes. I implemented the model, the Fourier analysis and the progress measures by hand in PyTorch, using the
+            public notebook only to check correctness.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/grokking-repro">Code</a>
+          </p>
+        </section>
+
+        <section class="project" id="refusal-direction">
+          <h3>Refusal is mediated by a single direction (Arditi et al. 2024)</h3>
+          <p class="meta">Aug 2026 · Mechanistic interpretability</p>
+          <p>
+            On Qwen2.5-0.5B-Instruct, removing one "refusal direction" from the activations cut refusals on harmful prompts from 83%
+            to 8%, and adding it made the model refuse 96% of harmless prompts, up from 4%.
+          </p>
+          <p class="note">Limits: 24 evaluation prompts per condition.</p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/refusal-repro">Code</a>
+          </p>
+        </section>
+
+        <section class="project" id="superposition">
+          <h3>Toy models of superposition, with sparse autoencoders</h3>
+          <p class="meta">Aug 2026 · Mechanistic interpretability</p>
+          <p>
+            Reproduced Elhage et al. (2022), then trained sparse autoencoders to recover the hidden features and graded them
+            against the known ground truth, before training an SAE on TinyStories-1M. It illustrates a known pitfall: an SAE
+            can reconstruct well while finding the wrong features.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/toy-models-of-superposition">Code</a>
+          </p>
+        </section>
+
+        <section class="project" id="induction-heads">
+          <h3>Induction heads in GPT-2 small</h3>
+          <p class="meta">Jul 2026 · Mechanistic interpretability</p>
+          <p>
+            Found and causally checked the induction circuit, following the ARENA material: the top induction head is 5.5 and
+            the previous-token head feeding it is 4.11. Ablating the heads raised loss on repeated tokens, and ablating 4.11
+            lowered 5.5's induction score from 0.92 to 0.69.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/mech-interp-induction-heads">Code and write-up</a>
+          </p>
+        </section>
+
+        <h2>ML engineering</h2>
+
+        <section class="project" id="finetuning-lab">
+          <h3>Local LLM fine-tuning lab</h3>
+          <p class="meta">Engineering study · 2026 · ML engineering, frozen evaluation</p>
+          <p>
+            Built an MLX/QLoRA pipeline for a structured, evidence-grounded Python documentation assistant.
+            A V3 adapter remains selected after four later adapters were rejected for cross-holdout utility
+            regressions, despite improvements in validation loss or decision accuracy.
+          </p>
+          <ul>
+            <li>Versioned datasets, untouched holdouts, and checkpoint gates</li>
+            <li>Strict schema validity improved from 33.3% to 100% on the 90-case V3 evaluation; the base
+              already achieved 100% on the core semantic metrics</li>
+            <li>Explicit rejection of V4–V7 regressions</li>
+          </ul>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/llm-finetuning-lab">Engineering artifacts</a>
+          </p>
+        </section>
+
+        <section class="project" id="math-rl">
+          <h3>Math reasoning with verifiable-reward RL</h3>
+          <p class="meta">Jul 2026 · Reinforcement learning</p>
+          <p>
+            Trains Qwen2.5-Math-1.5B-Instruct with GRPO, using an answer checker as the reward. The measured baseline on
+            MATH-500 is 69.3% accuracy on the first try and 82.5% within eight tries; the GRPO stage is implemented.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/math-rl">Code</a>
+          </p>
+        </section>
+
+        <h2>Security and formal methods</h2>
+
+        <section class="project" id="veritracemix">
+          <h3>VeriTraceMix: verifying an e-voting protocol</h3>
+          <p class="meta">Dec 2025 · Formal methods</p>
+          <p>
+            Formal verification, in ProVerif, of an end-to-end verifiable electronic voting protocol, proving its security
+            properties against a network attacker who controls all messages.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/VeriTraceMix">Models and proofs</a>
+          </p>
+        </section>
+
+        <section class="project" id="open-voting">
+          <h3>Open Voting demo</h3>
+          <p class="meta">Dec 2024 · Verifiable voting</p>
+          <p>
+            An end-to-end verifiable voting system built on the <a href="https://arxiv.org/abs/1908.09557">OpenVoting</a>
+            design, from my work on electronic voting at IIT Delhi.
+          </p>
+          <p class="links">
+            <a href="https://github.com/demoiverrakada/e-voting">Code</a>
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">© 2026 Umang Agarwal</footer>
+      </div>
+    </div>
+    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
+</html>
