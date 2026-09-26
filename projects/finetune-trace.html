@@ -4,217 +4,134 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Finetune Trace: Behavior or Topic? A research project by Umang Agarwal on auditing behavior installed by narrow finetuning.">
-    <meta name="theme-color" content="#f3efe5">
     <title>Finetune Trace: Behavior or Topic? — Umang Agarwal</title>
     <link rel="stylesheet" href="../assets/styles.css">
-    <script src="../assets/site.js" defer></script>
   </head>
   <body>
-    <div class="reading-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="shell nav-shell">
-        <a class="wordmark" href="../index.html" aria-label="Umang Agarwal, home">
-          <span class="wordmark-mark" aria-hidden="true">UA</span>
-          <span>Umang Agarwal</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-          <span class="sr-only">Toggle navigation</span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+    <div class="layout">
+      <aside class="sidebar">
+        <a href="../index.html"><img class="avatar" src="../assets/umang.jpg" alt="Photo of Umang Agarwal" width="120" height="120"></a>
+        <a class="name" href="../index.html">Umang Agarwal</a>
+        <p class="role">Independent AI safety researcher</p>
+        <nav aria-label="Main">
           <a href="../index.html">Home</a>
-          <a class="active" href="../research.html">Research</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../bookshelf.html">Bookshelf</a>
           <a href="../about.html">About</a>
-          <a class="nav-contact" href="mailto:omung.agarwal@gmail.com">Contact</a>
         </nav>
+      </aside>
+      <div class="content">
+      <main id="main">
+        <p class="meta"><a href="../projects.html">← All projects</a></p>
+        <h1>Finetune Trace: behavior or topic?</h1>
+        <p>
+          Can model-diffing methods recover the behavior installed by a finetune, rather than merely identifying
+          what its training data was about?
+        </p>
+        <dl class="facts">
+          <dt>Model family</dt><dd>Qwen3-1.7B LoRA</dd>
+          <dt>Controlled variants</dt><dd>8</dd>
+          <dt>Primary methods</dt><dd>Black-box elicitation, perplexity, logits, activations, causal intervention</dd>
+          <dt>Status</dt><dd>Stage 1 complete; Stage 1b in progress</dd>
+        </dl>
+
+        <h2>The question</h2>
+        <p>
+          Recent model-diffing methods can expose information associated with finetuning through outputs, token
+          probabilities, weights, or activations. But recognizing a topic does not tell an auditor what rule the
+          model learned—or what it will do when that rule conflicts with evidence in the prompt. A readable
+          trace is not yet an executable prediction.
+        </p>
+        <p>
+          This project crosses two training topics, two response policies, and two training seeds. An auditor sees
+          anonymously labelled base/finetuned model pairs and must emit a machine-readable behavioral specification
+          before hidden endpoint responses are generated.
+        </p>
+
+        <h2>Stage 1 result</h2>
+        <table>
+          <thead>
+            <tr><th>Method</th><th>Score</th><th>Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Active auditor</td><td>0.503</td><td>Predictive fidelity; failed the preregistered reliability gates.</td></tr>
+            <tr><td>Strongest static baseline</td><td>0.751</td><td>Also failed reliability: its null false-positive rate was 0.75.</td></tr>
+            <tr><td>Post-hoc diagnostic</td><td>0.804</td><td>A semantic topic proposer localized a repair opportunity, but is not a confirmatory result.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Causal test: topic information vs. behavior</h2>
+        <p>
+          The trace carried topic information without controlling most of the behavior. A parity-validated
+          middle-layer activation-difference intervention reduced recoverable secret-word information more than
+          five random controls. It did not cross the preregistered content-removal threshold, and concealment
+          changed by only one path for each word.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Word</th><th>Topic recovery</th><th>Concealment</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Gold</td><td>24/30 → 17/30</td><td>29/30 → 28/30</td></tr>
+            <tr><td>Leaf</td><td>15/30 → 11/30</td><td>30/30 → 29/30</td></tr>
+          </tbody>
+        </table>
+        <figure>
+          <img src="../assets/causal-behavior-dissociation.svg" alt="Two-panel figure comparing secret word recovery and concealment before and after activation difference replacement." loading="lazy">
+          <figcaption>The tested ADL direction contains causally relevant word information, but does not carry most of the learned concealment policy.</figcaption>
+        </figure>
+
+        <h2>Strongest positive result</h2>
+        <p>
+          A one-dimensional direction transferred a trained response across topic and seed. In a prospective
+          70-path replication, a direction extracted from a different topic and seed sharply changed
+          correct-guess behavior in the target models. Confirmations fell from <strong>69/70 to 3/70</strong>
+          and from <strong>62/70 to 2/70</strong>; five matched controls had no comparable effect.
+        </p>
+        <p class="note">
+          Important qualification: a preregistered alternative-wording follow-up failed. Much of the causal effect
+          remained attached to the legacy response token, so the result does not establish a vocabulary-invariant
+          policy representation.
+        </p>
+
+        <h2>Current work: Stage 1b</h2>
+        <p>
+          Stage 1b replaces a fixed-rule guess with a conditional response surface. Stage 1 revealed that some
+          finetunes followed evidence in the current prompt when it conflicted with the training topic. The
+          revised benchmark therefore compares semantic black-box elicitation, perplexity differencing, Diff
+          Mining, activation readout, contrastive output analysis, and active counterfactual testing.
+        </p>
+        <p>
+          Runtime parity and synthetic calibration are complete. Evidence generation is in progress; no hidden
+          Stage 1b score is reported here.
+        </p>
+
+        <h2>What this project does and does not show</h2>
+        <h3>Supported</h3>
+        <ul>
+          <li>The tested activation trace carried some causal topic information.</li>
+          <li>A response-linked direction transferred behavior across topic and seed.</li>
+          <li>The preregistered active auditor underperformed a strong static baseline.</li>
+        </ul>
+        <h3>Not supported</h3>
+        <ul>
+          <li>Open-world discovery of arbitrary hidden behavior.</li>
+          <li>A vocabulary-invariant representation of the learned policy.</li>
+          <li>Transfer to larger architectures or broadly post-trained models.</li>
+        </ul>
+
+        <h2>Code and data</h2>
+        <p>
+          <a href="https://github.com/demoiverrakada/finetune-trace-behavior">Code, protocols, results, and failure analysis</a>.
+          Large checkpoints and hidden evaluation truth are intentionally excluded.
+        </p>
+        <p class="meta">Next: <a href="../projects.html#sandbagging">Black-box vs. white-box sandbagging detection</a></p>
+      </main>
+
+      <footer class="site-footer">© 2026 Umang Agarwal</footer>
       </div>
-    </header>
-
-    <main id="main">
-      <header class="project-hero">
-        <div class="shell project-hero-grid">
-          <div data-reveal>
-            <a class="back-link" href="../research.html"><span aria-hidden="true">←</span> All research</a>
-            <div class="project-labels">
-              <span class="status status-active">Active research</span>
-              <span>Behavioral auditing · Causal interpretability</span>
-            </div>
-            <h1>Finetune Trace:<br><em>Behavior or Topic?</em></h1>
-            <p class="project-deck">
-              Can model-diffing methods recover the behavior installed by a finetune, rather than merely identifying
-              what its training data was about?
-            </p>
-          </div>
-          <dl class="project-facts" data-reveal>
-            <div><dt>Model family</dt><dd>Qwen3-1.7B LoRA</dd></div>
-            <div><dt>Controlled variants</dt><dd>8</dd></div>
-            <div><dt>Primary methods</dt><dd>Black-box elicitation, perplexity, logits, activations, causal intervention</dd></div>
-            <div><dt>Status</dt><dd>Stage 1 complete; Stage 1b in progress</dd></div>
-          </dl>
-        </div>
-      </header>
-
-      <article class="case-study">
-        <section class="case-section shell narrow-shell" data-reveal>
-          <p class="eyebrow">The question</p>
-          <h2>A readable trace is not yet an executable prediction.</h2>
-          <p class="lede">
-            Recent model-diffing methods can expose information associated with finetuning through outputs, token
-            probabilities, weights, or activations. But recognizing a topic does not tell an auditor what rule the
-            model learned—or what it will do when that rule conflicts with evidence in the prompt.
-          </p>
-          <p>
-            This project crosses two training topics, two response policies, and two training seeds. An auditor sees
-            anonymously labelled base/finetuned model pairs and must emit a machine-readable behavioral specification
-            before hidden endpoint responses are generated.
-          </p>
-        </section>
-
-        <section class="case-section case-band">
-          <div class="shell">
-            <p class="eyebrow" data-reveal>Stage 1 result</p>
-            <div class="headline-result-grid">
-              <div data-reveal>
-                <span class="big-number">0.503</span>
-                <h3>Active auditor</h3>
-                <p>Predictive fidelity; failed the preregistered reliability gates.</p>
-              </div>
-              <div data-reveal>
-                <span class="big-number">0.751</span>
-                <h3>Strongest static baseline</h3>
-                <p>Also failed reliability: its null false-positive rate was 0.75.</p>
-              </div>
-              <div data-reveal>
-                <span class="big-number">0.804</span>
-                <h3>Post-hoc diagnostic</h3>
-                <p>A semantic topic proposer localized a repair opportunity, but is not a confirmatory result.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-section shell two-column-case">
-          <div data-reveal>
-            <p class="eyebrow">Causal dissociation</p>
-            <h2>The trace carried topic information without controlling most of the behavior.</h2>
-            <p>
-              A parity-validated middle-layer activation-difference intervention reduced recoverable secret-word
-              information more than five random controls. It did not cross the preregistered content-removal threshold,
-              and concealment changed by only one path for each word.
-            </p>
-            <div class="result-table" role="table" aria-label="Activation intervention results">
-              <div class="result-table-row result-table-head" role="row">
-                <span role="columnheader">Word</span>
-                <span role="columnheader">Topic recovery</span>
-                <span role="columnheader">Concealment</span>
-              </div>
-              <div class="result-table-row" role="row">
-                <strong role="cell">Gold</strong>
-                <span role="cell">24/30 → 17/30</span>
-                <span role="cell">29/30 → 28/30</span>
-              </div>
-              <div class="result-table-row" role="row">
-                <strong role="cell">Leaf</strong>
-                <span role="cell">15/30 → 11/30</span>
-                <span role="cell">30/30 → 29/30</span>
-              </div>
-            </div>
-          </div>
-          <figure class="case-figure" data-reveal>
-            <img src="../assets/causal-behavior-dissociation.svg" alt="Two-panel figure comparing secret word recovery and concealment before and after activation difference replacement." loading="lazy">
-            <figcaption>The tested ADL direction contains causally relevant word information, but does not carry most of the learned concealment policy.</figcaption>
-          </figure>
-        </section>
-
-        <section class="case-section shell narrow-shell" data-reveal>
-          <p class="eyebrow">Strongest positive result</p>
-          <h2>A one-dimensional direction transferred a trained response across topic and seed.</h2>
-          <p>
-            In a prospective 70-path replication, a direction extracted from a different topic and seed sharply
-            changed correct-guess behavior in the target models. Confirmations fell from <strong>69/70 to 3/70</strong>
-            and from <strong>62/70 to 2/70</strong>; five matched controls had no comparable effect.
-          </p>
-          <aside class="caveat">
-            <strong>Important qualification.</strong>
-            A preregistered alternative-wording follow-up failed. Much of the causal effect remained attached to the
-            legacy response token, so the result does not establish a vocabulary-invariant policy representation.
-          </aside>
-        </section>
-
-        <section class="case-section case-dark">
-          <div class="shell next-stage-grid">
-            <div data-reveal>
-              <p class="eyebrow">Current work</p>
-              <h2>Stage 1b replaces a fixed-rule guess with a conditional response surface.</h2>
-            </div>
-            <div data-reveal>
-              <p>
-                Stage 1 revealed that some finetunes followed evidence in the current prompt when it conflicted with
-                the training topic. The revised benchmark therefore compares semantic black-box elicitation,
-                perplexity differencing, Diff Mining, activation readout, contrastive output analysis, and active
-                counterfactual testing.
-              </p>
-              <p>
-                Runtime parity and synthetic calibration are complete. Evidence generation is in progress; no hidden
-                Stage 1b score is reported here.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-section shell narrow-shell" data-reveal>
-          <p class="eyebrow">Claim boundary</p>
-          <h2>What this project does—and does not—show</h2>
-          <div class="boundary-grid">
-            <div>
-              <h3>Supported</h3>
-              <ul>
-                <li>The tested activation trace carried some causal topic information.</li>
-                <li>A response-linked direction transferred behavior across topic and seed.</li>
-                <li>The preregistered active auditor underperformed a strong static baseline.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Not supported</h3>
-              <ul>
-                <li>Open-world discovery of arbitrary hidden behavior.</li>
-                <li>A vocabulary-invariant representation of the learned policy.</li>
-                <li>Transfer to larger architectures or broadly post-trained models.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-section shell">
-          <div class="project-next" data-reveal>
-            <p>Project artifacts</p>
-            <h2><a href="https://github.com/demoiverrakada/finetune-trace-behavior">Code, protocols, results, and failure analysis <span aria-hidden="true">↗</span></a></h2>
-            <span>Large checkpoints and hidden evaluation truth are intentionally excluded.</span>
-          </div>
-        </section>
-
-        <section class="case-section shell">
-          <div class="project-next" data-reveal>
-            <p>Next project</p>
-            <h2><a href="../research.html#safety-research-bench">Safety Research Bench <span aria-hidden="true">→</span></a></h2>
-            <span>Can models reliably judge whether empirical AI-safety claims are supported?</span>
-          </div>
-        </section>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <div class="shell footer-grid">
-        <p>© 2026 Umang Agarwal</p>
-        <p>Research, engineering, and honest uncertainty.</p>
-        <div>
-          <a href="mailto:omung.agarwal@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
-        </div>
-      </div>
-    </footer>
+    </div>
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>

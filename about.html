@@ -3,136 +3,56 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="About Umang Agarwal, an independent AI safety researcher and software engineer.">
-    <meta name="theme-color" content="#f3efe5">
+    <meta name="format-detection" content="email=no, telephone=no">
+    <meta name="description" content="Background and contact details for Umang Agarwal.">
     <title>About — Umang Agarwal</title>
     <link rel="stylesheet" href="assets/styles.css">
-    <script src="assets/site.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="shell nav-shell">
-        <a class="wordmark" href="index.html" aria-label="Umang Agarwal, home">
-          <span class="wordmark-mark" aria-hidden="true">UA</span>
-          <span>Umang Agarwal</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-          <span class="sr-only">Toggle navigation</span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+    <div class="layout">
+      <aside class="sidebar">
+        <a href="index.html"><img class="avatar" src="assets/umang.jpg" alt="Photo of Umang Agarwal" width="120" height="120"></a>
+        <a class="name" href="index.html">Umang Agarwal</a>
+        <p class="role">Independent AI safety researcher</p>
+        <nav aria-label="Main">
           <a href="index.html">Home</a>
-          <a href="research.html">Research</a>
-          <a class="active" href="about.html">About</a>
-          <a class="nav-contact" href="mailto:omung.agarwal@gmail.com">Contact</a>
+          <a href="projects.html">Projects</a>
+          <a href="bookshelf.html">Bookshelf</a>
+          <a href="about.html" aria-current="page">About</a>
         </nav>
+      </aside>
+      <div class="content">
+      <main id="main">
+        <h1>About</h1>
+
+        <h2>Background</h2>
+        <dl class="timeline">
+          <dt>2026–present</dt>
+          <dd>Independent AI safety research: model diffing, behavioral auditing, sandbagging detection, and
+            safety-evaluation methodology.</dd>
+          <dt>Amazon</dt>
+          <dd>Software engineering: production systems and ML-assisted workflows in the automotive domain.</dd>
+          <dt>2022–2026</dt>
+          <dd>B.Tech in Electrical Engineering, IIT Delhi. Research on verifiable electronic voting and formal
+            methods.</dd>
+        </dl>
+        <p class="meta">
+          Tools: Python, PyTorch, Hugging Face, PEFT/LoRA, MLX, TransformerLens, scikit-learn, Inspect AI,
+          ProVerif, Dafny.
+        </p>
+
+        <h2>Contact</h2>
+        <dl class="timeline">
+          <dt>Email</dt><dd>omung.agarwal@gmail.com</dd>
+          <dt>GitHub</dt><dd><a href="https://github.com/demoiverrakada">github.com/demoiverrakada</a></dd>
+          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/omung-agarwal">linkedin.com/in/omung-agarwal</a></dd>
+        </dl>
+      </main>
+
+      <footer class="site-footer">© 2026 Umang Agarwal</footer>
       </div>
-    </header>
-
-    <main id="main">
-      <header class="page-header about-header shell" data-reveal>
-        <p class="eyebrow">About</p>
-        <h1>I like experiments that make it difficult to fool yourself.</h1>
-      </header>
-
-      <section class="section shell about-grid">
-        <div class="prose" data-reveal>
-          <p class="lede">
-            I’m Umang, a software engineer and independent AI-safety researcher based in India.
-          </p>
-          <p>
-            I work on behavioral auditing, model evaluations, finetuning forensics, and mechanistic
-            interpretability. The recurring question across my research is whether an attractive measurement
-            actually tracks the behavior or construct we care about.
-          </p>
-          <p>
-            That has led me to causal activation interventions, blinded model audits, sandbagging detectors,
-            matched-pair benchmarks, and fine-tuning pipelines with frozen holdouts. I try to build the
-            instrumentation myself, preregister consequential decisions, and treat a failed control as a reason
-            to stop—not as an invitation to rewrite the claim.
-          </p>
-          <p>
-            Alongside independent research, I work in software engineering at Amazon. I studied Electrical
-            Engineering at IIT Delhi, where I also worked on verifiable electronic voting and formal-methods analysis.
-          </p>
-        </div>
-
-        <aside class="about-aside" data-reveal>
-          <div>
-            <p class="aside-label">Current interests</p>
-            <ul>
-              <li>Behavioral auditing of finetuned models</li>
-              <li>Evaluation awareness and sandbagging</li>
-              <li>Activation-based monitoring and control</li>
-              <li>Reliable model-based evaluation</li>
-              <li>Benchmark design and measurement validity</li>
-            </ul>
-          </div>
-          <div>
-            <p class="aside-label">Tools I use</p>
-            <p>Python, PyTorch, Hugging Face, PEFT/LoRA, MLX, TransformerLens, scikit-learn, Inspect AI, ProVerif, and Dafny.</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section section-tinted">
-        <div class="shell timeline-layout">
-          <div data-reveal>
-            <p class="eyebrow">Background</p>
-            <h2>Research and engineering</h2>
-          </div>
-          <div class="timeline">
-            <article data-reveal>
-              <span class="timeline-year">2026–present</span>
-              <div>
-                <h3>Independent AI safety research</h3>
-                <p>Model diffing, behavioral auditing, sandbagging detection, and safety-evaluation methodology.</p>
-              </div>
-            </article>
-            <article data-reveal>
-              <span class="timeline-year">Amazon</span>
-              <div>
-                <h3>Software engineering</h3>
-                <p>Production systems and ML-assisted workflows in the automotive domain.</p>
-              </div>
-            </article>
-            <article data-reveal>
-              <span class="timeline-year">2022–2026</span>
-              <div>
-                <h3>IIT Delhi</h3>
-                <p>B.Tech in Electrical Engineering; research on verifiable electronic voting and formal methods.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section shell">
-        <div class="contact-panel" data-reveal>
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2>Have a research question worth stress-testing?</h2>
-          </div>
-          <div class="contact-actions">
-            <a class="button button-light" href="mailto:omung.agarwal@gmail.com">Send me an email</a>
-            <a class="button button-outline-light" href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="shell footer-grid">
-        <p>© 2026 Umang Agarwal</p>
-        <p>Research, engineering, and honest uncertainty.</p>
-        <div>
-          <a href="mailto:omung.agarwal@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
-        </div>
-      </div>
-    </footer>
+    </div>
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>
