@@ -1,6 +1,6 @@
 # Personal website
 
-A plain, dependency-free personal site for Umang Agarwal: HTML and one CSS file, no JavaScript or web fonts.
+A plain, dependency-free personal site for Umang Agarwal: a single HTML page with inline CSS, no frameworks or web fonts.
 
 ## Preview locally
 
@@ -14,13 +14,10 @@ Then open `http://localhost:8000`.
 
 ## Structure
 
-- `index.html` — homepage: photo, intro, current work, all projects
-- `projects.html` — all projects, grouped, with details and limits
-- `research.html` — redirects to `projects.html` (kept so old links still work)
-- `projects/finetune-trace.html` — Finetune Trace case study
-- `about.html` — background and contact details (email shown as plain text, not a link)
-- `bookshelf.html` — books, with favourites in bold and italics
-- `assets/styles.css` — the only stylesheet (light and dark mode)
+- `index.html` — the whole site: intro, now, questions, timeline, projects, honors, contact (styles inline, light and dark mode)
+- `404.html` — shown for any other path, links back to the homepage
+- `assets/umang.jpg` — profile photo
+- `assets/grokking_curve.png` — figure for the grokking reproduction
 
 ## Before publishing
 
