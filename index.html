@@ -1,105 +1,236 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Umang Agarwal is an independent AI safety researcher working on behavioral auditing, model evaluations, and sandbagging detection.">
-    <title>Umang Agarwal</title>
-    <link rel="stylesheet" href="assets/styles.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <div class="layout">
-      <aside class="sidebar">
-        <a href="index.html"><img class="avatar" src="assets/umang.jpg" alt="Photo of Umang Agarwal" width="120" height="120"></a>
-        <a class="name" href="index.html">Umang Agarwal</a>
-        <p class="role">Independent AI safety researcher</p>
-        <nav aria-label="Main">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="bookshelf.html">Bookshelf</a>
-          <a href="about.html">About</a>
-        </nav>
-      </aside>
-      <div class="content">
-      <main id="main">
-        <h1>Hi, I'm Umang.</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Umang Agarwal</title>
+  <meta name="description" content="Umang Agarwal: Software Development Engineer at Amazon, B.Tech IIT Delhi, studying AI safety.">
+  <link rel="canonical" href="https://demoiverrakada.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230b57d0'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Helvetica,Arial,sans-serif'%20font-size='38'%20font-weight='700'%20text-anchor='middle'%20fill='white'%3EU%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://demoiverrakada.github.io/">
+  <meta property="og:title" content="Umang Agarwal">
+  <meta property="og:description" content="Software Development Engineer at Amazon. B.Tech, IIT Delhi. Studying AI safety.">
+  <meta property="og:image" content="https://demoiverrakada.github.io/assets/umang.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Umang Agarwal",
+    "url": "https://demoiverrakada.github.io/",
+    "image": "https://demoiverrakada.github.io/assets/umang.jpg",
+    "jobTitle": "Software Development Engineer",
+    "worksFor": { "@type": "Organization", "name": "Amazon" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Delhi" },
+    "sameAs": ["https://github.com/demoiverrakada", "https://www.linkedin.com/in/omung-agarwal"]
+  }
+  </script>
+  <style>
+    :root { --text: #1d1d1f; --muted: #6e6e73; --link: #0b57d0; --rule: #e5e5ea; --bg: #ffffff; --panel: #f5f5f7; }
+    @media (prefers-color-scheme: dark) {
+      :root { --text: #f2f2f7; --muted: #a1a1a6; --link: #8ab4f8; --rule: #3a3a3c; --bg: #1c1c1e; --panel: #2c2c2e; }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 24px 88px; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-        <p>
-          I'm an independent AI safety researcher based in India. Alongside research, I work in software
-          engineering at Amazon.
-        </p>
-        <p>
-          Most of my work comes back to one question: when a measurement of an AI model looks good, does it
-          actually track the behavior we care about? In practice that means auditing what finetuning really
-          teaches a model, testing whether safety evaluations measure what they claim, and trying to detect
-          models that deliberately underperform (sandbagging).
-        </p>
-        <p>
-          I like experiments that make it hard to fool yourself. I write down the question and what would count
-          as success before looking at results, and when a control fails, I stop and report it rather than
-          rewriting the claim. Negative results are results.
-        </p>
+    nav { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 48px; font-size: 15px; }
+    nav .home { color: var(--text); font-weight: 600; }
+    nav .sections a { margin-left: 18px; color: var(--muted); }
+    nav .sections a:hover { color: var(--link); }
 
-        <h2>What I'm working on now</h2>
-        <p>
-          <a href="projects/finetune-trace.html"><strong>Finetune Trace</strong></a>: can model-diffing methods
-          recover the behavior a finetune installed in a model, rather than just what its training data was
-          about? Stage 1 is complete and Stage 1b is in progress.
-        </p>
+    header { display: flex; align-items: center; gap: 28px; margin-bottom: 32px; }
+    header img { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.015em; }
+    .role { color: var(--muted); margin: 0 0 10px; font-size: 16px; }
+    .links { font-size: 15px; }
+    .links a { margin-right: 16px; white-space: nowrap; }
 
-        <h2>Projects</h2>
-        <p>
-          Reproductions, exploratory studies and engineering projects.
-          <a href="projects.html">Details and limits for each are on the Projects page</a>.
-        </p>
+    .facts { background: var(--panel); border-radius: 10px; padding: 14px 18px; margin: 28px 0 8px; font-size: 15px; }
+    .facts div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 3px 0; }
+    .facts dt { color: var(--muted); }
+    .facts dd { margin: 0; }
 
-        <h3>Exploratory studies</h3>
-        <ul class="work compact">
-          <li><a class="title" href="projects.html#sandbagging">Black-box vs. white-box sandbagging detection</a><br>
-            Three ways to catch a model that deliberately underperforms; the black-box one caught nothing at a 1% false-positive rate.</li>
-          <li><a class="title" href="projects.html#eval-awareness">Evaluation-awareness control validation</a><br>
-            Stopped before training, because the supposedly neutral controls were not neutral.</li>
-          <li><a class="title" href="projects.html#refusal-cartography">Refusal Cartography</a><br>
-            Mapping what drives a model's refusals, to predict attacks it has never tried. Early stage.</li>
-          <li><a class="title" href="projects.html#redteam-pipeline">LLM red-teaming evaluation pipeline</a><br>
-            How often Llama 3.2 3B refusals hold: 48.4% attack success, 23% false refusals.</li>
-          <li><a class="title" href="projects.html#safety-benchmarks">AI alignment and safety benchmarks</a><br>
-            Separating what a model can do, what it will do, and whether controls can stop it.</li>
-        </ul>
+    h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+         margin: 52px 0 16px; padding-top: 22px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
+    h2 .updated { text-transform: none; letter-spacing: 0; font-weight: 400; margin-left: 8px; }
+    p { margin: 0 0 14px; }
+    .label { font-weight: 600; margin: 18px 0 6px; }
 
-        <h3>Reproductions</h3>
-        <ul class="work compact">
-          <li><a class="title" href="projects.html#grokking">Grokking: progress measures</a><br>
-            Nanda et al. (2023), rebuilt from scratch in PyTorch.</li>
-          <li><a class="title" href="projects.html#refusal-direction">Refusal is mediated by a single direction</a><br>
-            Arditi et al. (2024) on Qwen2.5-0.5B: removing one direction cut refusals from 83% to 8%.</li>
-          <li><a class="title" href="projects.html#superposition">Toy models of superposition, with sparse autoencoders</a><br>
-            Elhage et al. (2022), plus SAEs graded against known ground truth.</li>
-          <li><a class="title" href="projects.html#induction-heads">Induction heads in GPT-2 small</a><br>
-            Found and causally checked the induction circuit.</li>
-        </ul>
+    blockquote { margin: 0 0 16px; padding: 4px 0 4px 16px; border-left: 3px solid var(--link); }
+    ul.plain { margin: 0 0 14px; padding-left: 20px; }
+    ul.plain li { margin-bottom: 6px; }
+    .refs li { font-size: 15px; }
+    .refs .meta { color: var(--muted); }
 
-        <h3>ML engineering</h3>
-        <ul class="work compact">
-          <li><a class="title" href="projects.html#finetuning-lab">Local LLM fine-tuning lab</a><br>
-            An MLX/QLoRA pipeline with untouched holdouts and checkpoint gates.</li>
-          <li><a class="title" href="projects.html#math-rl">Math reasoning with verifiable-reward RL</a><br>
-            GRPO on Qwen2.5-Math-1.5B with an answer checker as the reward.</li>
-        </ul>
+    .timeline { list-style: none; margin: 0; padding: 0; }
+    .timeline li { display: grid; grid-template-columns: 160px 1fr; gap: 16px; margin-bottom: 14px; }
+    .timeline .when { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+    .timeline .sub { display: block; color: var(--muted); font-size: 15px; }
 
-        <h3>Security and formal methods</h3>
-        <ul class="work compact">
-          <li><a class="title" href="projects.html#veritracemix">VeriTraceMix</a><br>
-            Formal verification of an end-to-end verifiable e-voting protocol in ProVerif.</li>
-          <li><a class="title" href="projects.html#open-voting">Open Voting demo</a><br>
-            An end-to-end verifiable voting system, from my work at IIT Delhi.</li>
-        </ul>
-      </main>
+    .project-title { font-weight: 600; margin-bottom: 4px; }
+    .project-title.spaced { margin-top: 32px; }
+    h3 { font-size: 17px; margin: 44px 0 4px; }
+    .muted { color: var(--muted); font-size: 15px; margin-bottom: 18px; }
+    figure { margin: 4px 0 12px; }
+    figure img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+    .honors { list-style: none; margin: 0; padding: 0; }
+    .honors li { display: grid; grid-template-columns: 160px 1fr; gap: 16px; margin-bottom: 10px; }
+    .honors .when { color: var(--muted); font-size: 15px; padding-top: 1px; }
+    .project-links { font-size: 15px; }
+    .project-links a { margin-right: 14px; }
 
-      <footer class="site-footer">© 2026 Umang Agarwal</footer>
+    footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 560px) {
+      main { padding-top: 32px; }
+      nav { margin-bottom: 32px; }
+      nav .sections { display: none; }
+      header { flex-direction: column; align-items: flex-start; gap: 18px; }
+      header img { width: 104px; height: 104px; }
+      .facts div { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
+      .timeline li, .honors li { grid-template-columns: 1fr; gap: 0; margin-bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <nav>
+    <a class="home" href="#">Umang Agarwal</a>
+    <span class="sections">
+      <a href="#now">Now</a><a href="#questions">Questions</a><a href="#timeline">Timeline</a><a href="#projects">Projects</a><a href="#honors">Honors</a><a href="#contact">Contact</a>
+    </span>
+  </nav>
+
+  <header>
+    <img src="assets/umang.jpg" alt="Photo of Umang Agarwal" width="132" height="132">
+    <div>
+      <h1>Hi, I'm Umang.</h1>
+      <p class="role">Software Development Engineer, Amazon &middot; B.Tech, IIT Delhi</p>
+      <div class="links">
+        <a href="mailto:omung.agarwal@gmail.com">Email</a>
+        <a href="https://github.com/demoiverrakada">GitHub</a>
+        <a href="https://www.linkedin.com/in/omung-agarwal">LinkedIn</a>
       </div>
     </div>
-    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
-  </body>
+  </header>
+
+  <p>I just completed my B.Tech in Electrical Engineering from IIT Delhi, and I'm now working as a Software Development Engineer at Amazon, India. I believe AI alignment is the biggest concern right now, and worth working on.</p>
+
+  <dl class="facts">
+    <div><dt>Job</dt><dd>Software Development Engineer, Amazon, India</dd></div>
+    <div><dt>Studying</dt><dd>AI safety: model diffing and auditing fine-tuned models</dd></div>
+    <div><dt>Looking for</dt><dd>A fellowship or job in AI safety</dd></div>
+    <div><dt>Previously</dt><dd>Built a cryptographic voting system used in IIT Delhi elections</dd></div>
+  </dl>
+
+  <h2 id="now">Now <span class="updated">updated October 2026</span></h2>
+  <p>Alongside my job, I'm studying AI safety, reading research papers, and trying out random experiments. I'm also looking for a fellowship or job in the field.</p>
+  <p class="label">The question I'm working on</p>
+  <blockquote>When a model has clearly learned specific false facts from a fine-tune that was diluted with ordinary text, can model-diffing methods still find those facts by comparing it with its base model, and do they report facts that aren't there when nothing was fine-tuned?</blockquote>
+  <p class="label">It builds on</p>
+  <ul class="plain refs">
+    <li><a href="https://arxiv.org/abs/2510.13900">Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences</a> <span class="meta">&middot; Minder et al., ICLR 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2605.25902">Reading the Finetuning Prior: Verbatim Content Recovery via Contrastive Decoding Diffing</a> <span class="meta">&middot; Brzozowski et al., 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2605.00994">Most Current Model Organisms Are Leaky: Perplexity Differencing Often Reveals Finetuning Objectives</a> <span class="meta">&middot; Abu Baker, Baroni &amp; Wilhelm, 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2608.26462">Diff Mining: Logit Differences Reveal Finetuning Objectives</a> <span class="meta">&middot; Kocher et al., 2026</span></li>
+  </ul>
+
+  <h2 id="questions">Questions I'm curious about</h2>
+  <ul class="plain">
+    <li>When a model thinks about lying or cheating, how does that not show up in its chain of thought?</li>
+    <li>Where in training does a model go wrong, so that it starts acting misaligned?</li>
+    <li>If the reward signal itself is wrong, what should we use instead?</li>
+  </ul>
+
+  <h2 id="timeline">Timeline</h2>
+  <ul class="timeline">
+    <li><span class="when">Jul 2026 &ndash; now</span>
+        <span>Software Development Engineer, Amazon<span class="sub">India</span></span></li>
+    <li><span class="when">Aug 2026</span>
+        <span>AGI Strategy, BlueDot Impact<span class="sub">30-hour AI safety course &middot; <a href="https://bluedot.org/certification?id=recjOqUM3ovzmMJNB">Certificate</a></span></span></li>
+    <li><span class="when">May &ndash; Jul 2025</span>
+        <span>Software Development Engineer Intern, Amazon<span class="sub">Bengaluru</span></span></li>
+    <li><span class="when">Jan 2024 &ndash; Apr 2025</span>
+        <span>Project under Prof. Subodh Sharma, IIT Delhi<span class="sub">Cryptographic Dual Voting System (Open Voting)</span></span></li>
+    <li><span class="when">2022 &ndash; 2026</span>
+        <span>B.Tech, Electrical Engineering, IIT Delhi<span class="sub">Coursework: Machine Learning, Cryptography, Network Security, Algorithms, Operating Systems</span></span></li>
+  </ul>
+
+  <h2 id="projects">Projects</h2>
+  <p class="project-title">End-to-end cryptographic voting system</p>
+  <p>My major project so far isn't in AI safety. It was a college project where I implemented a cryptographic voting system end to end for college elections, and it was actually used in the elections by nearly 3,000 voters. It's based on a research paper by Prashant Agrawal.</p>
+  <ul class="plain">
+    <li>A React Native app for voters to verify their own votes</li>
+    <li>A Node.js/Express backend with MongoDB</li>
+    <li>A traceable mixnet for encrypting and decrypting votes</li>
+    <li>Used in the IIT Delhi CAIC elections: 0% paper&ndash;digital discrepancy, results in under 10 minutes</li>
+  </ul>
+  <p class="project-links">
+    <a href="https://arxiv.org/abs/1908.09557">Paper: OpenVoting (Agrawal et al.)</a>
+    <a href="https://github.com/demoiverrakada/e-voting">Code</a>
+  </p>
+
+  <p class="project-title spaced">Formal verification of the voting protocol (VeriTraceMix)</p>
+  <p>Modeled the protocol in ProVerif and proved, against a network attacker, ballot secrecy, voter anonymity, privacy even when all but one tallying authority is corrupt, platform integrity, dispute resolution, and that a judge can trace a ballot. Negative tests, each removing one mechanism, confirm that ProVerif then finds the attack.</p>
+  <p class="project-links"><a href="https://github.com/demoiverrakada/VeriTraceMix">Code</a></p>
+
+  <p class="project-title spaced">Audit: LLM judges on the AAAR-1.0 benchmark</p>
+  <p>With two small local models (Qwen3-4B, Phi-4-mini), the same model output scored 47&ndash;55 F1 points differently depending only on which model judged it. On equation inference, marking every candidate correct (40% F1) beat Qwen's 38.6%.</p>
+  <p class="project-links"><a href="https://github.com/RenzeLou/AAAR-1.0">Benchmark: AAAR-1.0</a></p>
+
+  <h3 id="reproductions">Reproductions</h3>
+  <p class="muted">Published results, rebuilt from scratch to learn the methods.</p>
+
+  <p class="project-title">Grokking (Nanda et al., 2023)</p>
+  <p>Trained a 1-layer transformer on (a + b) mod 113 from scratch. It memorized the training set by epoch 138, but only generalized (95% test accuracy) at epoch 7,562, and reached 100% test accuracy by the end.</p>
+  <figure><img src="assets/grokking_curve.png" width="1100" height="412" alt="Train accuracy reaches 100% near epoch 140; test accuracy jumps to 100% near epoch 8,000"></figure>
+  <p class="project-links">
+    <a href="https://arxiv.org/abs/2301.05217">Paper</a>
+    <a href="https://github.com/demoiverrakada/grokking-repro">Code</a>
+  </p>
+
+  <p class="project-title spaced">Refusal is mediated by a single direction (Arditi et al., 2024)</p>
+  <p>On Qwen2.5-0.5B-Instruct, removing one direction cut refusals on harmful prompts from 83% to 8%, and adding it made the model refuse 96% of harmless prompts (24 prompts each).</p>
+  <p class="project-links">
+    <a href="https://arxiv.org/abs/2406.11717">Paper</a>
+    <a href="https://github.com/demoiverrakada/refusal-repro">Code</a>
+  </p>
+
+  <p class="project-title spaced">Toy models of superposition, and recovering features with SAEs (Elhage et al., 2022)</p>
+  <p>Created superposition in a toy model, then trained sparse autoencoders to recover the hidden features. Reconstruction looked perfect (R&sup2; &asymp; 1.000) even when only 24% of the learned features were real. On TinyStories-1M, swapping in the SAE's reconstruction kept 92.3% of the model's performance (cross-entropy loss recovered).</p>
+  <p class="project-links">
+    <a href="https://transformer-circuits.pub/2022/toy_model/index.html">Paper</a>
+    <a href="https://github.com/demoiverrakada/toy-models-of-superposition">Code</a>
+  </p>
+
+  <p class="project-title spaced">Induction heads in GPT-2 small (Olsson et al., 2022)</p>
+  <p>Found the induction head (5.5) and the previous-token head that feeds it (4.11), and confirmed both causally: ablating the induction heads raised the loss on repeated text, and ablating 4.11 dropped 5.5's induction score from 0.92 to 0.69.</p>
+  <p class="project-links">
+    <a href="https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html">Paper</a>
+    <a href="https://github.com/demoiverrakada/mech-interp-induction-heads">Code</a>
+  </p>
+
+  <h2 id="honors">Honors</h2>
+  <ul class="honors">
+    <li><span class="when">Sep 2026</span>
+        <span>Won a prize in the Lucky Break Chat Challenge, <a href="https://app.grayswan.ai/arena">Gray Swan Arena</a> (AI red-teaming)</span></li>
+    <li><span class="when">Mar 2026</span>
+        <span>Global rank 270 in picoCTF 2026, Carnegie Mellon University's capture-the-flag competition</span></li>
+    <li><span class="when">2022</span>
+        <span>JEE Advanced: All India Rank 1338</span></li>
+  </ul>
+
+  <h2 id="contact">Contact</h2>
+  <p>Email is the best way to reach me: <a href="mailto:omung.agarwal@gmail.com">omung.agarwal@gmail.com</a>. My code is on GitHub as <a href="https://github.com/demoiverrakada">demoiverrakada</a>. If you work on model diffing, fine-tune auditing, or interpretability, I'd love to hear from you.</p>
+
+  <footer>Last updated October 2026 &middot; Plain HTML and CSS, no frameworks.</footer>
+</main>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
 </html>
