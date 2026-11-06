@@ -124,21 +124,22 @@
 
   <dl class="facts">
     <div><dt>Job</dt><dd>Software Development Engineer, Amazon, India</dd></div>
-    <div><dt>Studying</dt><dd>AI safety: model diffing and auditing fine-tuned models</dd></div>
+    <div><dt>Studying</dt><dd>AI safety: monitoring AI agents, emotion probes, and model diffing</dd></div>
     <div><dt>Looking for</dt><dd>A fellowship or job in AI safety</dd></div>
     <div><dt>Previously</dt><dd>Built a cryptographic voting system used in IIT Delhi elections</dd></div>
   </dl>
 
-  <h2 id="now">Now <span class="updated">updated October 2026</span></h2>
-  <p>Alongside my job, I'm studying AI safety, reading research papers, and trying out random experiments. I'm also looking for a fellowship or job in the field.</p>
+  <h2 id="now">Now <span class="updated">updated November 2026</span></h2>
+  <p>Alongside my job, I'm studying AI safety, reading research papers, and running my own experiments. I'm also looking for a fellowship or job in the field.</p>
+  <p>Latest: I published <a href="https://www.lesswrong.com/posts/m76ygTSPhbGZ8wxpr/tracing-information-flow-to-check-whether-ai-reviewers-are">Tracing information flow to check whether AI reviewers are really independent</a> on LessWrong, from my project at Apart's AI Collusion Research Sprint.</p>
   <p class="label">The question I'm working on</p>
-  <blockquote>When a model has clearly learned specific false facts from a fine-tune that was diluted with ordinary text, can model-diffing methods still find those facts by comparing it with its base model, and do they report facts that aren't there when nothing was fine-tuned?</blockquote>
+  <blockquote>Can emotion-like internal states in a model reveal deception that its text hides, and do they add anything beyond direct deception probes and text-only monitors?</blockquote>
   <p class="label">It builds on</p>
   <ul class="plain refs">
-    <li><a href="https://arxiv.org/abs/2510.13900">Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences</a> <span class="meta">&middot; Minder et al., ICLR 2026</span></li>
-    <li><a href="https://arxiv.org/abs/2605.25902">Reading the Finetuning Prior: Verbatim Content Recovery via Contrastive Decoding Diffing</a> <span class="meta">&middot; Brzozowski et al., 2026</span></li>
-    <li><a href="https://arxiv.org/abs/2605.00994">Most Current Model Organisms Are Leaky: Perplexity Differencing Often Reveals Finetuning Objectives</a> <span class="meta">&middot; Abu Baker, Baroni &amp; Wilhelm, 2026</span></li>
-    <li><a href="https://arxiv.org/abs/2608.26462">Diff Mining: Logit Differences Reveal Finetuning Objectives</a> <span class="meta">&middot; Kocher et al., 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2604.07729">Emotion Concepts and their Function in a Large Language Model</a> <span class="meta">&middot; Sofroniew et al. (Anthropic), 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2610.35411">The Geometry of Emotion Representations Across Scale, Depth, and Instruction Tuning</a> <span class="meta">&middot; Hollowell, 2026 (I reproduced its Gemma 2 vectors)</span></li>
+    <li><a href="https://arxiv.org/abs/2502.03407">Detecting Strategic Deception Using Linear Probes</a> <span class="meta">&middot; Goldowsky-Dill et al., 2025</span></li>
+    <li><a href="https://arxiv.org/abs/2606.30449">Internal-State Probes Read the Situation, Not the Action</a> <span class="meta">&middot; Fomin, David &amp; LeVi, 2026 (the main objection)</span></li>
   </ul>
 
   <h2 id="questions">Questions I'm curious about</h2>
@@ -152,24 +153,40 @@
   <ul class="timeline">
     <li><span class="when">Jul 2026 &ndash; now</span>
         <span>Software Development Engineer, Amazon<span class="sub">India</span></span></li>
+    <li><span class="when">Oct 2026</span>
+        <span>Apart AI Collusion Research Sprint<span class="sub">Solo project &middot; <a href="https://apartresearch.com/project/crosschecking-ai-agents-decisions-did-they-depend-on-another-agents-work-7fqz">Report</a> &middot; <a href="https://www.lesswrong.com/posts/m76ygTSPhbGZ8wxpr/tracing-information-flow-to-check-whether-ai-reviewers-are">LessWrong post</a></span></span></li>
     <li><span class="when">Aug 2026</span>
         <span>AGI Strategy, BlueDot Impact<span class="sub">30-hour AI safety course &middot; <a href="https://bluedot.org/certification?id=recjOqUM3ovzmMJNB">Certificate</a></span></span></li>
     <li><span class="when">May &ndash; Jul 2025</span>
         <span>Software Development Engineer Intern, Amazon<span class="sub">Bengaluru</span></span></li>
-    <li><span class="when">Jan 2024 &ndash; Apr 2025</span>
+    <li><span class="when">Jan 2024 &ndash; Apr 2026</span>
         <span>Project under Prof. Subodh Sharma, IIT Delhi<span class="sub">Cryptographic Dual Voting System (Open Voting)</span></span></li>
     <li><span class="when">2022 &ndash; 2026</span>
         <span>B.Tech, Electrical Engineering, IIT Delhi<span class="sub">Coursework: Machine Learning, Cryptography, Network Security, Algorithms, Operating Systems</span></span></li>
   </ul>
 
   <h2 id="projects">Projects</h2>
-  <p class="project-title">End-to-end cryptographic voting system</p>
-  <p>My major project so far isn't in AI safety. It was a college project where I implemented a cryptographic voting system end to end for college elections, and it was actually used in the elections by nearly 3,000 voters. It's based on a research paper by Prashant Agrawal.</p>
+  <p class="project-title">Do AI reviewers really judge independently?</p>
+  <p>At Apart's AI Collusion Research Sprint, I built a loan-review workspace from 200 real 2025 Vermont mortgages and tested whether an AI reviewer told to judge independently is swayed by a colleague's note. With the note, Claude Opus 5.5 still said its rating was independent in 21 of 24 runs. A transcript monitor caught 1 of the 6 Claude cases; my "flow audit", which reruns the reviewer without the note and against a placebo, caught all 6, with no observed false alarms across 67 independent cases. On Gemma 4 12B the two did about equally well. Small study, one domain.</p>
+  <p class="project-links">
+    <a href="https://www.lesswrong.com/posts/m76ygTSPhbGZ8wxpr/tracing-information-flow-to-check-whether-ai-reviewers-are">LessWrong post</a>
+    <a href="https://apartresearch.com/project/crosschecking-ai-agents-decisions-did-they-depend-on-another-agents-work-7fqz">Apart report</a>
+  </p>
+
+  <p class="project-title spaced">Emotion probes as a deception signal (in progress)</p>
+  <p>I reproduced Hollowell's released emotion vectors for Gemma 2 exactly, and my own re-run of Gemma-2-9B-it matched his activations across all 42 layers. In a pre-registered pilot of 27 scripted conversations, the probe's valence fell under escalating pressure and recovered afterwards (p = 0.00025), though it showed nothing beyond what the text already said. Next: a masking test, then models trained to deceive.</p>
+
+  <p class="project-title spaced">Model diffing under dilution</p>
+  <p>I tested four model-diffing methods (ADL, Diff Mining, perplexity differencing, CDD) on 12 diluted Qwen3-1.7B fine-tunes. Undiluted, CDD recovered 5 of 7 planted facts; diluted, none of the methods recovered any at standard budgets. The released series also changed training steps, so it doesn't isolate dilution.</p>
+  <p class="project-links"><a href="https://github.com/demoiverrakada/diffing-dilution">Code and data</a></p>
+
+  <p class="project-title spaced">End-to-end cryptographic voting system</p>
+  <p>My major project so far isn't in AI safety. It was a college project where I implemented a cryptographic voting system end to end for college elections, and it was actually used in IIT Delhi elections, including about 3,000 voters in April 2026. It's based on a research paper by Prashant Agrawal.</p>
   <ul class="plain">
     <li>A React Native app for voters to verify their own votes</li>
     <li>A Node.js/Express backend with MongoDB</li>
     <li>A traceable mixnet for encrypting and decrypting votes</li>
-    <li>Used in the IIT Delhi CAIC elections: 0% paper&ndash;digital discrepancy, results in under 10 minutes</li>
+    <li>Used in IIT Delhi elections: 0% paper&ndash;digital discrepancy, results in under 10 minutes</li>
   </ul>
   <p class="project-links">
     <a href="https://arxiv.org/abs/1908.09557">Paper: OpenVoting (Agrawal et al.)</a>
@@ -218,8 +235,6 @@
 
   <h2 id="honors">Honors</h2>
   <ul class="honors">
-    <li><span class="when">Sep 2026</span>
-        <span>Won a prize in the Lucky Break Chat Challenge, <a href="https://app.grayswan.ai/arena">Gray Swan Arena</a> (AI red-teaming)</span></li>
     <li><span class="when">Mar 2026</span>
         <span>Global rank 270 in picoCTF 2026, Carnegie Mellon University's capture-the-flag competition</span></li>
     <li><span class="when">2022</span>
@@ -227,9 +242,9 @@
   </ul>
 
   <h2 id="contact">Contact</h2>
-  <p>Email is the best way to reach me: <a href="mailto:omung.agarwal@gmail.com">omung.agarwal@gmail.com</a>. My code is on GitHub as <a href="https://github.com/demoiverrakada">demoiverrakada</a>. If you work on model diffing, fine-tune auditing, or interpretability, I'd love to hear from you.</p>
+  <p>Email is the best way to reach me: <a href="mailto:omung.agarwal@gmail.com">omung.agarwal@gmail.com</a>. My code is on GitHub as <a href="https://github.com/demoiverrakada">demoiverrakada</a>. If you work on monitoring AI agents, emotion probes, interpretability, or model diffing, I'd love to hear from you.</p>
 
-  <footer>Last updated October 2026 &middot; Plain HTML and CSS, no frameworks.</footer>
+  <footer>Last updated November 2026 &middot; Plain HTML and CSS, no frameworks.</footer>
 </main>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8a3defc5d1704431888c645bde742cbd"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
