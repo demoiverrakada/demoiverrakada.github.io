@@ -132,21 +132,13 @@
   <h2 id="now">Now <span class="updated">updated November 2026</span></h2>
   <p>Alongside my job, I'm studying AI safety, reading research papers, and running my own experiments. I'm also looking for a fellowship or job in the field.</p>
   <p>Latest: I published <a href="https://www.lesswrong.com/posts/m76ygTSPhbGZ8wxpr/tracing-information-flow-to-check-whether-ai-reviewers-are">Tracing information flow to check whether AI reviewers are really independent</a> on LessWrong, from my project at Apart's AI Collusion Research Sprint.</p>
-  <p class="label">The question I'm working on</p>
-  <blockquote>Can emotion-like internal states in a model reveal deception that its text hides, and do they add anything beyond direct deception probes and text-only monitors?</blockquote>
-  <p class="label">It builds on</p>
-  <ul class="plain refs">
-    <li><a href="https://arxiv.org/abs/2604.07729">Emotion Concepts and their Function in a Large Language Model</a> <span class="meta">&middot; Sofroniew et al. (Anthropic), 2026</span></li>
-    <li><a href="https://arxiv.org/abs/2610.35411">The Geometry of Emotion Representations Across Scale, Depth, and Instruction Tuning</a> <span class="meta">&middot; Hollowell, 2026 (I reproduced its Gemma 2 vectors)</span></li>
-    <li><a href="https://arxiv.org/abs/2502.03407">Detecting Strategic Deception Using Linear Probes</a> <span class="meta">&middot; Goldowsky-Dill et al., 2025</span></li>
-    <li><a href="https://arxiv.org/abs/2606.30449">Internal-State Probes Read the Situation, Not the Action</a> <span class="meta">&middot; Fomin, David &amp; LeVi, 2026 (the main objection)</span></li>
-  </ul>
 
   <h2 id="questions">Questions I'm curious about</h2>
   <ul class="plain">
     <li>When a model thinks about lying or cheating, how does that not show up in its chain of thought?</li>
     <li>Where in training does a model go wrong, so that it starts acting misaligned?</li>
     <li>If the reward signal itself is wrong, what should we use instead?</li>
+    <li>Do AI models have emotion-like states, and how do they affect what the model does?</li>
   </ul>
 
   <h2 id="timeline">Timeline</h2>
@@ -162,7 +154,7 @@
     <li><span class="when">Jan 2024 &ndash; Apr 2026</span>
         <span>Project under Prof. Subodh Sharma, IIT Delhi<span class="sub">Cryptographic Dual Voting System (Open Voting)</span></span></li>
     <li><span class="when">2022 &ndash; 2026</span>
-        <span>B.Tech, Electrical Engineering, IIT Delhi<span class="sub">Coursework: Machine Learning, Cryptography, Network Security, Algorithms, Operating Systems</span></span></li>
+        <span>B.Tech, Electrical Engineering, IIT Delhi<span class="sub">Coursework: Linear Algebra, Machine Learning, Algorithms, Cryptography, Network Security, Operating Systems</span></span></li>
   </ul>
 
   <h2 id="projects">Projects</h2>
@@ -174,7 +166,7 @@
   </p>
 
   <p class="project-title spaced">Emotion probes as a deception signal (in progress)</p>
-  <p>I reproduced Hollowell's released emotion vectors for Gemma 2 exactly, and my own re-run of Gemma-2-9B-it matched his activations across all 42 layers. In a pre-registered pilot of 27 scripted conversations, the probe's valence fell under escalating pressure and recovered afterwards (p = 0.00025), though it showed nothing beyond what the text already said. Next: a masking test, then models trained to deceive.</p>
+  <p>I reproduced Hollowell's released emotion vectors for Gemma 2 exactly, and my own re-run of Gemma-2-9B-it matched his activations across all 42 layers. Across four models (Gemma 2 9B and 27B, Qwen2.5 7B and 32B), the probe readings mostly mirror what the model's words already say: a text classifier explains 77–90% of them, and telling Gemma to stay cheerful hid no negativity. In models trained to keep a secret, a strong apparent &ldquo;anxious&rdquo; signal failed its planned control: truthful answers read even more anxious, so it is a topic effect, not a lie signal.</p>
 
   <p class="project-title spaced">Model diffing under dilution</p>
   <p>I tested four model-diffing methods (ADL, Diff Mining, perplexity differencing, CDD) on 12 diluted Qwen3-1.7B fine-tunes. Undiluted, CDD recovered 5 of 7 planted facts; diluted, none of the methods recovered any at standard budgets. The released series also changed training steps, so it doesn't isolate dilution.</p>
