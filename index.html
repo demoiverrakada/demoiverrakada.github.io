@@ -182,11 +182,10 @@
   </ul>
   <p class="project-links">
     <a href="https://arxiv.org/abs/1908.09557">Paper: OpenVoting (Agrawal et al.)</a>
-    <a href="https://github.com/demoiverrakada/e-voting">Code</a>
   </p>
 
   <p class="project-title spaced">Formal verification of the voting protocol (VeriTraceMix)</p>
-  <p>Modeled the protocol in ProVerif and proved, against a network attacker, ballot secrecy, voter anonymity, privacy even when all but one tallying authority is corrupt, platform integrity, dispute resolution, and that a judge can trace a ballot. Negative tests, each removing one mechanism, confirm that ProVerif then finds the attack.</p>
+  <p>Modeled the protocol in ProVerif and proved, against a network attacker, ballot secrecy, platform integrity, dispute resolution, and that a judge can trace a ballot. Negative tests, each removing one mechanism, confirm that ProVerif then finds the attack. ProVerif also reports voter anonymity, but removing the mixnet doesn't break that proof, so it doesn't show that the mixnet is what protects anonymity.</p>
   <p class="project-links"><a href="https://github.com/demoiverrakada/VeriTraceMix">Code</a></p>
 
   <p class="project-title spaced">Audit: LLM judges on the AAAR-1.0 benchmark</p>
